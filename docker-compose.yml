@@ -2,21 +2,21 @@ version: "3.5"
 
 # Docker Volumes
 volumes:
-    papermc_data:
-        name: papermc_data
+    papermc_data2:
+        name: papermc_data2
 
 # Docker services
 services:
     papermc:
         build: .
-        container_name: papermc
+        container_name: papermc2
         restart: always
         tty: true
         stdin_open: true
         ports:
             - "25575:25565"
         volumes:
-            - papermc_data:/data
+            - papermc_data2:/data
         labels:
             - "traefik.enable=true"
             - "traefik.tcp.routers.minecraft.entrypoints=minecraft"
