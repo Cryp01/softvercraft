@@ -30,6 +30,7 @@ services:
     build: .
     container_name: papermc
     labels:
+      - "traefik.http.routers.papermc.tls.certresolver=letsencrypt"
       - "traefik.enable=true"
       - "traefik.http.routers.papermc.rule=Host(`softvercraft.softver.cc`)"
       - "traefik.http.services.papermc.loadbalancer.server.port=25565"
