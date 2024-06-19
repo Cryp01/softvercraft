@@ -17,6 +17,7 @@ services:
       - --entrypoints.minecraft.address=:25575
       - --entrypoints.traefik.address=:8055  
     ports:
+      - "80:80" 
       # The Web UI (enabled by --api.insecure=true)
       - "8055:8055"
       # Minecraft port
