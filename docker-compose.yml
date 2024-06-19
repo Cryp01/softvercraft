@@ -1,10 +1,5 @@
 version: "3.5"
 
-# Docker Volumes
-volumes:
-  papermc_data:
-    name: papermc_data
-
 # Docker services
 services:
   reverse-proxy:
@@ -14,31 +9,23 @@ services:
     command: 
       - --api.insecure=true
       - --providers.docker
-      - --entrypoints.minecraft.address=:25575
-      - --entrypoints.traefik.address=:8055  
+      - --entrypoints.web.address=:8055  # Cambia el puerto HTTP a 8080
     ports:
-      - "8044:8044" 
-      # The Web UI (enabled by --api.insecure=true)
-      - "8055:8055"
-      # Minecraft port
-      - "25575:25575"
+      # Puertos expuestos
+      - "8055:8055"   # Puerto HTTP
     volumes:
-      # So that Traefik can listen to the Docker events
+      # Monta el socket de Docker para escuchar eventos de Docker
       - /var/run/docker.sock:/var/run/docker.sock
 
   papermc:
     build: .
     container_name: papermc
     labels:
-      - "traefik.http.routers.papermc.tls.certresolver=letsencrypt"
       - "traefik.enable=true"
       - "traefik.http.routers.papermc.rule=Host(`softvercraft.softver.cc`)"
-      - "traefik.http.services.papermc.loadbalancer.server.port=25565"
-      - "traefik.tcp.routers.papermc.entrypoints=minecraft"
+      - "traefik.http.routers.papermc.entrypoints=web"
     restart: always
     tty: true
     stdin_open: true
     ports:
       - "25565:25565"
-    volumes:
-      - papermc_data:/data
