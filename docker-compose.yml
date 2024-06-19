@@ -30,7 +30,8 @@ services:
     container_name: papermc
     labels:
       - "traefik.enable=true"
-      - "traefik.tcp.routers.papermc.rule=HostSNI(`*`)"
+      - "traefik.http.routers.papermc.rule=Host(`softvercraft.softver.cc`)"
+      - "traefik.http.services.papermc.loadbalancer.server.port=25565"
       - "traefik.tcp.routers.papermc.entrypoints=minecraft"
     restart: always
     tty: true
