@@ -1,11 +1,17 @@
+version: "3.5"
+
+# Docker Volumes
+volumes:
+    papermc_data:
+        name: papermc_data
+
+# Docker services
 services:
-  mc:
-    image: itzg/minecraft-server
-    tty: true
-    stdin_open: true
-    ports:
-      - "25575:25565"
-    environment:
-      EULA: "TRUE"
-    volumes:
-       - ./minecraft-data:/data
+    papermc:
+        build: .
+        container_name: papermc
+        restart: always
+        tty: true
+        stdin_open: true
+        ports:
+            - "25575:25565"
