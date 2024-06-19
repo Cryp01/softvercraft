@@ -26,4 +26,4 @@ services:
     tty: true
     stdin_open: true
     ports:
-      - "25575:25565"  # Expose Minecraft TCP port
+      - "25565:25565"  # Expose Minecraft TCP port
