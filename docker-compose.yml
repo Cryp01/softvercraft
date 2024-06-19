@@ -15,11 +15,10 @@ services:
       - --api.insecure=true
       - --providers.docker
       - --entrypoints.minecraft.address=:25575
+      - --entrypoints.traefik.address=:8055  
     ports:
-      # The HTTP port
-      - "80:80"
       # The Web UI (enabled by --api.insecure=true)
-      - "8080:8080"
+      - "8055:8055"
       # Minecraft port
       - "25575:25575"
     volumes:
