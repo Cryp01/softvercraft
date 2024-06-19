@@ -3,29 +3,27 @@ version: "3.5"
 # Docker services
 services:
   reverse-proxy:
-    # The official v3 Traefik docker image
+    # Traefik v3 docker image
     image: traefik:v3.0
-    # Enables the web UI and tells Traefik to listen to docker
+    # Enables the insecure API and tells Traefik to listen to docker
     command: 
       - --api.insecure=true
       - --providers.docker
-      - --entrypoints.web.address=:8055  # Cambia el puerto HTTP a 8080
+      - --entrypoints.web.address=:8055  # HTTP entrypoint
     ports:
-      # Puertos expuestos
-      - "8055:8055"   # Puerto HTTP
+      - "8055:8055"   # Expose HTTP port
     volumes:
-      # Monta el socket de Docker para escuchar eventos de Docker
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock  # Mount Docker socket
 
   papermc:
     build: .
     container_name: papermc
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.papermc.rule=Host(`softvercraft.softver.cc`)"
-      - "traefik.http.routers.papermc.entrypoints=web"
+      - "traefik.tcp.routers.papermc.rule=HostSNI(`softvercraft.softver.cc`)"
+      - "traefik.tcp.routers.papermc.entrypoints=minecraft"
     restart: always
     tty: true
     stdin_open: true
     ports:
-      - "25565:25565"
+      - "25575:25565"  # Expose Minecraft TCP port
