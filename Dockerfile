@@ -6,6 +6,7 @@ WORKDIR /minecraft
 
 # Copy all files from the local directory minecraft-data to /minecraft in the container
 COPY minecraft-data /minecraft
+COPY haproxy.cfg /usr/local/etc/haproxy
 
 # Expose the Minecraft port
 EXPOSE 25565
