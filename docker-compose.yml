@@ -1,0 +1,17 @@
+version: "3.5"
+# Docker Volumes
+volumes:
+  papermc_data:
+    name: papermc_data
+
+services:
+  papermc:
+    build: .
+    container_name: papermc
+    restart: always
+    tty: true
+    stdin_open: true
+    ports:
+      - "25575:25565"
+    volumes:
+      - papermc_data:/data
