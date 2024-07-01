@@ -11,7 +11,7 @@ COPY minecraft-data /minecraft
 EXPOSE 25565
 
 # Set the entrypoint
-ENTRYPOINT ["./run.sh"]
+ENTRYPOINT ["bash", "./run.sh"]
 
 # Set up the volumes
 VOLUME /minecraft
