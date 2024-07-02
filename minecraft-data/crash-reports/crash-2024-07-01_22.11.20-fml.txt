@@ -1,0 +1,189 @@
+---- Minecraft Crash Report ----
+// Surprise! Haha. Well, this is awkward.
+
+Time: 1/7/24, 10:11 p. m.
+Description: Mod loading error has occurred
+
+java.lang.Exception: Mod Loading has failed
+	at net.minecraftforge.logging.CrashReportExtender.dumpModLoadingCrashReport(CrashReportExtender.java:55) ~[forge-1.18.2-40.2.21-universal.jar%2379!/:?] {re:classloading}
+	at net.minecraftforge.server.loading.ServerModLoader.load(ServerModLoader.java:39) ~[forge-1.18.2-40.2.21-universal.jar%2379!/:?] {re:classloading}
+	at net.minecraft.server.Main.main(Main.java:112) ~[server-1.18.2-20220404.173914-srg.jar%2374!/:?] {re:classloading}
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?] {}
+	at java.lang.reflect.Method.invoke(Method.java:580) ~[?:?] {}
+	at net.minecraftforge.fml.loading.targets.CommonServerLaunchHandler.lambda$launchService$0(CommonServerLaunchHandler.java:32) ~[fmlloader-1.18.2-40.2.21.jar%2318!/:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:37) [modlauncher-9.1.3.jar%235!/:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) [modlauncher-9.1.3.jar%235!/:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) [modlauncher-9.1.3.jar%235!/:?] {}
+	at cpw.mods.modlauncher.Launcher.run(Launcher.java:106) [modlauncher-9.1.3.jar%235!/:?] {}
+	at cpw.mods.modlauncher.Launcher.main(Launcher.java:77) [modlauncher-9.1.3.jar%235!/:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) [modlauncher-9.1.3.jar%235!/:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) [modlauncher-9.1.3.jar%235!/:?] {}
+	at cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:149) [bootstraplauncher-1.0.0.jar:?] {}
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: main
+Suspected Mods: NONE
+Stacktrace:
+	at net.minecraftforge.fml.loading.RuntimeDistCleaner.processClassWithFlags(RuntimeDistCleaner.java:57) ~[fmlloader-1.18.2-40.2.21.jar%2318!/:1.0] {}
+-- MOD torohealth --
+Details:
+	Caused by 0: java.lang.ExceptionInInitializerError
+		at jdk.internal.misc.Unsafe.ensureClassInitialized0(Native Method) ~[?:?] {}
+		at jdk.internal.misc.Unsafe.ensureClassInitialized(Unsafe.java:1160) ~[?:?] {}
+		at jdk.internal.reflect.MethodHandleAccessorFactory.ensureClassInitialized(MethodHandleAccessorFactory.java:340) ~[?:?] {}
+		at jdk.internal.reflect.MethodHandleAccessorFactory.newConstructorAccessor(MethodHandleAccessorFactory.java:103) ~[?:?] {}
+		at jdk.internal.reflect.ReflectionFactory.newConstructorAccessor(ReflectionFactory.java:173) ~[?:?] {}
+		at java.lang.reflect.Constructor.acquireConstructorAccessor(Constructor.java:549) ~[?:?] {}
+		at java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499) ~[?:?] {}
+		at java.lang.reflect.Constructor.newInstance(Constructor.java:486) ~[?:?] {}
+		at net.minecraftforge.fml.javafmlmod.FMLModContainer.constructMod(FMLModContainer.java:67) ~[javafmllanguage-1.18.2-40.2.21.jar%2376!/:?] {}
+		at net.minecraftforge.fml.ModContainer.lambda$buildTransitionHandler$4(ModContainer.java:122) ~[fmlcore-1.18.2-40.2.21.jar%2375!/:?] {}
+		at java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804) ~[?:?] {}
+		at java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796) ~[?:?] {}
+		at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507) ~[?:?] {}
+		at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1491) ~[?:?] {}
+		at java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:2073) ~[?:?] {}
+		at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2035) ~[?:?] {}
+		at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187) ~[?:?] {}
+
+	Mod File: /D:/minecraft-mods/minecraft-data/mods/torohealth-1.18-forge-2.jar
+	Failure message: ToroHealth (torohealth) has failed to load correctly
+		java.lang.ExceptionInInitializerError: null
+	Mod Version: 1.18-forge-2
+	Mod Issue URL: https://github.com/ToroCraft/ToroHealth/issues
+	Exception message: java.lang.RuntimeException: Attempted to load class net/minecraft/client/gui/screens/Screen for invalid dist DEDICATED_SERVER
+Stacktrace:
+	at net.minecraftforge.fml.loading.RuntimeDistCleaner.processClassWithFlags(RuntimeDistCleaner.java:57) ~[fmlloader-1.18.2-40.2.21.jar%2318!/:1.0] {}
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-9.1.3.jar%235!/:?] {}
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-9.1.3.jar%235!/:?] {}
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-9.1.3.jar%235!/:?] {}
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-1.0.8.jar:?] {}
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-1.0.8.jar:?] {}
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-1.0.8.jar:?] {}
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-1.0.8.jar:?] {}
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-1.0.8.jar:?] {}
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:525) ~[?:?] {}
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[?:?] {}
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:1023) ~[?:?] {}
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:119) ~[securejarhandler-1.0.8.jar:?] {}
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-1.0.8.jar:?] {}
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-1.0.8.jar:?] {}
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-1.0.8.jar:?] {}
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-1.0.8.jar:?] {}
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:525) ~[?:?] {}
+	at net.torocraft.torohealth.ToroHealth.<clinit>(ToroHealth.java:19) ~[torohealth-1.18-forge-2.jar%2370!/:1.18-forge-2] {re:classloading}
+	at jdk.internal.misc.Unsafe.ensureClassInitialized0(Native Method) ~[?:?] {}
+	at jdk.internal.misc.Unsafe.ensureClassInitialized(Unsafe.java:1160) ~[?:?] {}
+	at jdk.internal.reflect.MethodHandleAccessorFactory.ensureClassInitialized(MethodHandleAccessorFactory.java:340) ~[?:?] {}
+	at jdk.internal.reflect.MethodHandleAccessorFactory.newConstructorAccessor(MethodHandleAccessorFactory.java:103) ~[?:?] {}
+	at jdk.internal.reflect.ReflectionFactory.newConstructorAccessor(ReflectionFactory.java:173) ~[?:?] {}
+	at java.lang.reflect.Constructor.acquireConstructorAccessor(Constructor.java:549) ~[?:?] {}
+	at java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499) ~[?:?] {}
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:486) ~[?:?] {}
+	at net.minecraftforge.fml.javafmlmod.FMLModContainer.constructMod(FMLModContainer.java:67) ~[javafmllanguage-1.18.2-40.2.21.jar%2376!/:?] {}
+	at net.minecraftforge.fml.ModContainer.lambda$buildTransitionHandler$4(ModContainer.java:122) ~[fmlcore-1.18.2-40.2.21.jar%2375!/:?] {}
+	at java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804) ~[?:?] {}
+	at java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796) ~[?:?] {}
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507) ~[?:?] {}
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1491) ~[?:?] {}
+	at java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:2073) ~[?:?] {}
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2035) ~[?:?] {}
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187) ~[?:?] {}
+
+
+-- System Details --
+Details:
+	Minecraft Version: 1.18.2
+	Minecraft Version ID: 1.18.2
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 22.0.1, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode, sharing), Oracle Corporation
+	Memory: 3424659632 bytes (3266 MiB) / 5972688896 bytes (5696 MiB) up to 27917287424 bytes (26624 MiB)
+	CPUs: 16
+	Processor Vendor: GenuineIntel
+	Processor Name: 11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz
+	Identifier: Intel64 Family 6 Model 141 Stepping 1
+	Microarchitecture: unknown
+	Frequency (GHz): 2.30
+	Number of physical packages: 1
+	Number of physical CPUs: 8
+	Number of logical CPUs: 16
+	Graphics card #0 name: LuminonCore IDDCX Adapter
+	Graphics card #0 vendor: LuminonCore
+	Graphics card #0 VRAM (MB): 0.00
+	Graphics card #0 deviceId: unknown
+	Graphics card #0 versionInfo: DriverVersion=1.0.2018.1204
+	Graphics card #1 name: NVIDIA GeForce RTX 3070 Laptop GPU
+	Graphics card #1 vendor: NVIDIA (0x10de)
+	Graphics card #1 VRAM (MB): 4095.00
+	Graphics card #1 deviceId: 0x24dd
+	Graphics card #1 versionInfo: DriverVersion=31.0.15.4601
+	Memory slot #0 capacity (MB): 16384.00
+	Memory slot #0 clockSpeed (GHz): 2.40
+	Memory slot #0 type: DDR4
+	Memory slot #1 capacity (MB): 8192.00
+	Memory slot #1 clockSpeed (GHz): 3.20
+	Memory slot #1 type: DDR4
+	Virtual memory max (MB): 42859.30
+	Virtual memory used (MB): 35626.22
+	Swap memory total (MB): 18432.00
+	Swap memory used (MB): 962.13
+	JVM Flags: 1 total; -Xmx26G
+	ModLauncher: 9.1.3+9.1.3+main.9b69c82a
+	ModLauncher launch target: forgeserver
+	ModLauncher naming: srg
+	ModLauncher services: 
+		 mixin PLUGINSERVICE 
+		 eventbus PLUGINSERVICE 
+		 slf4jfixer PLUGINSERVICE 
+		 object_holder_definalize PLUGINSERVICE 
+		 runtime_enum_extender PLUGINSERVICE 
+		 capability_token_subclass PLUGINSERVICE 
+		 accesstransformer PLUGINSERVICE 
+		 runtimedistcleaner PLUGINSERVICE 
+		 mixin TRANSFORMATIONSERVICE 
+		 fml TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		minecraft@1.0
+		lowcodefml@null
+		javafml@null
+	Mod List: 
+		server-1.18.2-20220404.173914-srg.jar             |Minecraft                     |minecraft                     |1.18.2              |COMMON_SET|Manifest: NOSIGNATURE
+		TConstruct-1.18.2-3.7.1.155.jar                   |Tinkers' Construct            |tconstruct                    |3.7.1.155           |COMMON_SET|Manifest: NOSIGNATURE
+		EnchantmentDescriptions-Forge-1.18.2-10.0.12.jar  |EnchantmentDescriptions       |enchdesc                      |10.0.12             |COMMON_SET|Manifest: eb:c4:b1:67:8b:f9:0c:db:dc:4f:01:b1:8e:61:64:39:4c:10:85:0b:a6:c4:c7:48:f0:fa:95:f2:cb:08:3a:e5
+		unusualprehistory-1.1.2.jar                       |Unusual Prehistory            |unusualprehistory             |1.1.2               |COMMON_SET|Manifest: NOSIGNATURE
+		ava-1.18.2-2.1.2.89950.jar                        |A.V.A - Alliance of Valiant Ar|ava                           |2.1.2.89950         |COMMON_SET|Manifest: NOSIGNATURE
+		jei-1.18.2-forge-10.2.1.1006.jar                  |Just Enough Items             |jei                           |10.2.1.1006         |COMMON_SET|Manifest: NOSIGNATURE
+		torohealth-1.18-forge-2.jar                       |ToroHealth                    |torohealth                    |1.18-forge-2        |ERROR     |Manifest: NOSIGNATURE
+		sophisticatedcore-1.18.2-0.6.4.604.jar            |Sophisticated Core            |sophisticatedcore             |1.18.2-0.6.4.604    |COMMON_SET|Manifest: NOSIGNATURE
+		Mantle-1.18.2-1.9.50.jar                          |Mantle                        |mantle                        |1.9.50              |COMMON_SET|Manifest: NOSIGNATURE
+		gravestone-1.18.2-1.0.2.jar                       |Gravestone Mod                |gravestone                    |1.18.2-1.0.2        |COMMON_SET|Manifest: NOSIGNATURE
+		EpicFight-18.5.14.jar                             |Epic Fight                    |epicfight                     |18.5.14             |COMMON_SET|Manifest: NOSIGNATURE
+		journeymap-1.18.2-5.9.8-forge.jar                 |Journeymap                    |journeymap                    |5.9.8               |COMMON_SET|Manifest: NOSIGNATURE
+		citadel-1.11.3-1.18.2.jar                         |Citadel                       |citadel                       |1.11.3              |COMMON_SET|Manifest: NOSIGNATURE
+		alexsmobs-1.18.6.jar                              |Alex's Mobs                   |alexsmobs                     |1.18.6              |COMMON_SET|Manifest: NOSIGNATURE
+		[1.18.2]+SecurityCraft+v1.9.8.jar                 |SecurityCraft                 |securitycraft                 |1.9.8               |COMMON_SET|Manifest: NOSIGNATURE
+		elevatorid-1.18.2-1.8.4.jar                       |Elevator Mod                  |elevatorid                    |1.18.2-1.8.4        |COMMON_SET|Manifest: NOSIGNATURE
+		Bookshelf-Forge-1.18.2-13.3.56.jar                |Bookshelf                     |bookshelf                     |13.3.56             |COMMON_SET|Manifest: eb:c4:b1:67:8b:f9:0c:db:dc:4f:01:b1:8e:61:64:39:4c:10:85:0b:a6:c4:c7:48:f0:fa:95:f2:cb:08:3a:e5
+		sophisticatedbackpacks-1.18.2-3.20.2.1036.jar     |Sophisticated Backpacks       |sophisticatedbackpacks        |1.18.2-3.20.2.1036  |COMMON_SET|Manifest: NOSIGNATURE
+		simpleplanes-1.18.2-5.2.2.jar                     |Simple Planes                 |simpleplanes                  |1.18.2-5.2.2        |COMMON_SET|Manifest: NOSIGNATURE
+		architectury-4.11.93-forge.jar                    |Architectury                  |architectury                  |4.11.93             |COMMON_SET|Manifest: NOSIGNATURE
+		ftb-library-forge-1802.3.11-build.177.jar         |FTB Library                   |ftblibrary                    |1802.3.11-build.177 |COMMON_SET|Manifest: NOSIGNATURE
+		minecraft-comes-alive-7.4.9+1.18.2-universal.jar  |Minecraft Comes Alive         |mca                           |7.4.9+1.18.2        |COMMON_SET|Manifest: NOSIGNATURE
+		Orcz_0.83_1.18.2 [AI FIXES].jar                   |Orcz                          |orcz                          |0.80                |COMMON_SET|Manifest: NOSIGNATURE
+		Beyond-Earth-1.18.2-7.0-SNAPSHOT.jar              |Beyond Earth                  |beyond_earth                  |7.0-SNAPSHOT        |COMMON_SET|Manifest: NOSIGNATURE
+		mythicmounts-18.2-7.2-forge.jar                   |MythicMounts                  |mythicmounts                  |18.2-7.2-forge      |COMMON_SET|Manifest: NOSIGNATURE
+		FallingTree-1.18.2-3.5.5.jar                      |FallingTree                   |fallingtree                   |3.5.5               |COMMON_SET|Manifest: 3c:8e:df:6c:df:a6:2a:9f:af:64:ea:04:9a:cf:65:92:3b:54:93:0e:96:50:b4:52:e1:13:42:18:2b:ae:40:29
+		forge-1.18.2-40.2.21-universal.jar                |Forge                         |forge                         |40.2.21             |COMMON_SET|Manifest: 84:ce:76:e8:45:35:e4:0e:63:86:df:47:59:80:0f:67:6c:c1:5f:6e:5f:4d:b3:54:47:1a:9f:7f:ed:5e:f2:90
+		twilightforest-1.18.2-4.1.1494-universal.jar      |The Twilight Forest           |twilightforest                |4.1.1494            |COMMON_SET|Manifest: NOSIGNATURE
+		geckolib-forge-1.18-3.0.57.jar                    |GeckoLib                      |geckolib3                     |3.0.57              |COMMON_SET|Manifest: NOSIGNATURE
+		ftb-industrial-contraptions-1802.1.6-build.220.jar|FTB Industrial Contraptions   |ftbic                         |1802.1.6-build.220  |COMMON_SET|Manifest: NOSIGNATURE
+		JUST ENOUGH DRUGZ  (Zaza mod)-1.1.15-1.18.2.jar   |Just Enough Drugz             |justenoughdrugz               |1.1.9               |COMMON_SET|Manifest: NOSIGNATURE
+		dungeons_1.16_mc1.18.2.jar                        |Minecraft Dungeons            |duneons                       |1.16                |COMMON_SET|Manifest: NOSIGNATURE
+	Crash Report UUID: 70b9d012-6765-47f7-9113-520a502367b1
+	FML: 40.2
+	Forge: net.minecraftforge:40.2.21
